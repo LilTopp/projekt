@@ -15,8 +15,8 @@
 
 \pagestyle{headings}
 
-\title{An Architecture for Game to Game Data Transfer Using Blockchain
-\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2022/23, vedenie: Igor Stupavský}} % meno a priezvisko vyučujúceho na cvičeniach
+\title{Využitie Blockchainu v hernom svete
+\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2022/23, vedenie: Igor Stupavský}}
 
 \author{Daniel Činčura\\[2pt]
 	{\small Slovenská technická univerzita v Bratislave}\\
@@ -24,7 +24,7 @@
 	{\small \texttt{xcincura@stuba.sk}}
 	}
 
-\date{\small 30. september 2022} % upravte
+\date{\small 30. september 2022}
 
 
 
@@ -40,68 +40,34 @@
 
 \section{Úvod}
 
+V súčastnosti implementáciu blockchainu nájdeme len v malom počte hier, ktoré pochádzajú hlavne od malých vývojárov. Najčastejšie nájdeme využitie blockchainu v metaverse, kde zohráva dôležitú rolu pri vývoji Webu 3.0, ktorý je predovšetkým o decentralizácii. Technológia blockchainu sa používa hlavne pri predaji herných predmetov. Tento predaj sa aj tak väčšinu času realizuje na webových stránkach a nie priamo v hre. Blockchaine v hernom priemysle má omnoho väčšie využitie, ako len predaj herných predmetov.
 V tradičnej hernej architektúre, používatelia nevlastnia svoje herné dáta. Ak poskytovateľ hry ukončí svoje služby, používateľ príde o všetky dáta, čiže stratia všetok čas a úsilie ktoré hre obetovali. Vďaka smart kontraktom fungujúcich na blockchaine, môžeme vytvoriť herné servery a databázy, ktoré budú hráčom poskytovať herné dáta, ktoré budú skutočne vlastniť. Keď sa používatelia rozhodnú odísť, tieto údaje je možné jednoducho preniesť do novej hry. Všeobecná forma údajov, ktoré je možné prenášať medzi hrami, sa prezentuje ako „EXPTOKEN“, čo sú mince, ktoré užívatelia zarábajú, keď trávia čas v hre, a ktoré možno vymeniť za herné predmety a iné herné výhody.
 
-Pridanie blockchainu do terajšej hernej architektúry sme bližšie opísali v časti 2. Dôležité komponenty blockchainu sú uvedené v časti 3. Hodnotenie používateľov sme bližšie opísali v sekcii 4. V sekcii 5 sme sa venovali experimentu. Záverečná poznámky a pohľady do budúcna prináša časť 6.~\ref{nejaka}.
+Pridanie blockchainu do terajšej hernej architektúry sme bližšie opísali v časti 2. Dôležité komponenty blockchainu sú uvedené v časti 3. Hodnotenie používateľov sme bližšie opísali v sekcii 4. V sekcii 5 sme sa venovali experimentu. Záverečná poznámky a pohľady do budúcna prináša časť 6.
 
 
 
 
 \section{Herná architektúra s použitím Blockchainu} \label{nejaka}
 
-Architektúra obr.~\ref{f:rozhod} by mohla byť integrovaná s tradičnými hernými servermi. Hry by sa však mohli vyvíjať aj bez spoliehania sa na tradičnú štruktúru.
-
-\begin{figure*}[tbh]
-\centering
-%\includegraphics[scale=1.0]{Integrácia Blockchainu.pdf}
-Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
-\caption{Rozhodujúci argument.}
-\label{f:rozhod}
-\end{figure*}
+Ako sme už spomenuli blockchain by mal v hernom priemysle obrovské využitie. Viacero veľkých spoločností prišlo s nápadom integrovania tohto prvku do svojich hier. Existuje množstvo spôsobov integrácie blockchainu. V tejto časti sa pozrieme na implementáciu blockchainu do terajšej hernej architektúry, ale taktiež na architektúru v ktorej nie sú použité tradičné prvky. Architektúra obr.~\ref{f:rozhod} by mohla byť integrovaná s tradičnými hernými servermi. Hry by sa však mohli vyvíjať aj bez spoliehania sa na tradičnú štruktúru. Pre správnu komunikáciu medzi tradičnými hernými servermi a blockchain časťou potrebujeme časť s názvom framework wrapper. Táto architektúra umožňuje herným vývojárom úplne oddeliť hernú logiku od smart kontraktov.  
 
 
 
-\section{Iná časť} \label{ina}
-
-Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
-
-Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
+\section{Komponenty blockchainu} \label{komponenty}
 
 
-\subsection{Nejaké vysvetlenie} \label{ina:nejake}
-
-Niekedy treba uviesť zoznam:
-
-\begin{itemize}
-\item jedna vec
-\item druhá vec
-	\begin{itemize}
-	\item x
-	\item y
-	\end{itemize}
-\end{itemize}
-
-Ten istý zoznam, len číslovaný:
-
-\begin{enumerate}
-\item jedna vec
-\item druhá vec
-	\begin{enumerate}
-	\item x
-	\item y
-	\end{enumerate}
-\end{enumerate}
+\subsection{Komponent hráča} \label{komponenty:hrac}
 
 
-\subsection{Ešte nejaké vysvetlenie} \label{ina:este}
+\subsection{Komponent blockchainu} \label{komponenty:blockchain}
 
-\paragraph{Veľmi dôležitá poznámka.}
-Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
+
+\subsection{Komponent vývojára} \label{komponenty:vyvojar}
 
 
 
-\section{Dôležitá časť} \label{dolezita}
-
+\section{Vyplácanie hráčov} \label{vyplacanie}
 
 
 
@@ -110,11 +76,9 @@ Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom
 
 
 
-\section{Záver} \label{zaver} % prípadne iný variant názvu
+\section{Záver a pohľady do budúcna} \label{zaver}
 
 
-
-%\acknowledgement{Ak niekomu chcete poďakovať\ldots}
 
 
 % týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
